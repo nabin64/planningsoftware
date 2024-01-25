@@ -1,0 +1,207 @@
+<!-- your_template.html -->
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="page-header">
+  <div class="row align-items-center">
+    <div class="col">
+      <h6>योजना/आयोजनाको सम्झौता गर्नुहोस ।</h6>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <form
+        action="{% url 'add_contract' %}"
+        id="add-project-form"
+        project-url="{% url 'ajax_load_user_committee' %}"
+        cost-estimate-url="{% url 'ajax_load_cost_estimate' %}"
+        contingency-url="{% url 'ajax_load_contingency' %}"
+        budget-url="{% url 'ajax_load_budget' %}"
+        usercontribution-url="{% url 'ajax_load_usercontribution'%}"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        {% csrf_token %}
+        <div class="row custom-font-size">
+          <div class="col-md-8">
+            <div class="form-group">
+              <label for="name">योजनाको नामः</label>
+              <select
+                class="form-control form-select"
+                name="project"
+                id="id_project"
+                required
+              >
+                <option value="{{i.id}}">योजना छान्नुहोस</option>
+                {% for i in projects %}
+                <option value="{{i.id}}">{{i.name}}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="form-group">
+              <label for="name">उपभोक्ता समितिको नामः</label>
+              <select
+                class="form-control"
+                name="user_committee"
+                id="id_user_committee"
+                required
+              >
+                <option value=""></option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="name">विनियोजित बजेट</label>
+              <select
+                class="form-control"
+                name="cost_estimate"
+                id="id_budget"
+                required
+              >
+                <option value=""></option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="name">कन्टेन्जेन्सी</label>
+              <select
+                class="form-control"
+                name="cost_estimate"
+                id="id_contingency"
+                required
+              >
+                <option value=""></option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="name">श्रमदान</label>
+              <select
+                class="form-control"
+                name="cost_estimate"
+                id="id_usercontribution"
+                required
+              >
+                <option value=""></option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="name">लागत अनुमान</label>
+              <select
+                class="form-control"
+                name="cost_estimate"
+                id="id_cost_estimate"
+                required
+              >
+                <option value=""></option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="name">योजना सुरु मिति</label>
+              <input
+                type="text"
+                class="form-control nepali-date date-required-check"
+                name="date"
+                placeholder="योजना सुरु मिति"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="name">योजना समाप्त मिति</label>
+              <input
+                type="text"
+                class="form-control nepali-date date-required-check"
+                name="date"
+                placeholder="योजना समाप्त मिति"
+                required
+              />
+            </div>
+          </div>
+        </div>
+      </form>
+      
+    </div>
+  </div>
+</div>
+{% endblock %} {% block script %}
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+<script>
+  $("#id_project").change(function () {
+    const url = $("#add-project-form").attr("project-url");
+    const projectid = $(this).val();
+
+    $.ajax({
+      url: url,
+      data: { projectid: projectid },
+      success: function (data) {
+        $("#id_user_committee").html(data);
+      },
+    });
+  });
+
+  $("#id_project").change(function () {
+    const url = $("#add-project-form").attr("cost-estimate-url");
+    const projectid = $(this).val();
+
+    $.ajax({
+      url: url,
+      data: { projectid: projectid },
+      success: function (data) {
+        $("#id_cost_estimate").html(data);
+      },
+    });
+  });
+  $("#id_project").change(function () {
+    const url = $("#add-project-form").attr("budget-url");
+    const projectid = $(this).val();
+
+    $.ajax({
+      url: url,
+      data: { projectid: projectid },
+      success: function (data) {
+        $("#id_budget").html(data);
+      },
+    });
+  });
+  $("#id_project").change(function () {
+    const url = $("#add-project-form").attr("contingency-url");
+    const projectid = $(this).val();
+
+    $.ajax({
+      url: url,
+      data: { projectid: projectid },
+      success: function (data) {
+        $("#id_contingency").html(data);
+      },
+    });
+  });
+  $("#id_project").change(function () {
+    const url = $("#add-project-form").attr("usercontribution-url");
+    const projectid = $(this).val();
+
+    $.ajax({
+      url: url,
+      data: { projectid: projectid },
+      success: function (data) {
+        $("#id_usercontribution").html(data);
+      },
+    });
+  });
+  const printDocumentUrl = "{% url 'print_contract_document' %}";
+
+  $("#printDocumentBtn").on("click", function () {
+    // Redirect to the print document URL
+    window.location.href = printDocumentUrl;
+  });
+</script>
+{% endblock %}

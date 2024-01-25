@@ -1,0 +1,13 @@
+<!-- accounts/templates/accounts/import_excel.html -->
+{% extends 'base.html' %} {% block content %}
+<h2>Import Excel Data</h2>
+<form
+  method="post"
+  enctype="multipart/form-data"
+  action="{% url 'import_excel' %}"
+>
+  {% csrf_token %}
+  <input type="file" name="excel_file" accept=".xlsx" />
+  <button type="submit">Upload</button>
+</form>
+{% endblock %}

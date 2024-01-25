@@ -1,0 +1,142 @@
+{% load static %}
+<div class="header">
+
+   {% if user.user_type == '1' %}
+    <div class="header-left">
+        {% if user.is_authenticated %}
+       <h4><a href="" class="logo">
+       <img src="{% static 'assets/img/logonepal.png' %}"  alt="Logo"> &nbsp;&nbsp;&nbsp;&nbsp; <span>{{user.username}}</span>
+       </a></h4>
+       {% endif %}
+       <a href="" class="logo logo-small">
+       <img src="{% static 'assets/img/logonepal.png' %}" alt="Logo" width="30" height="30">
+       </a>
+    </div>
+    {% elif user.user_type == '2' %}
+    <div class="header-left">
+      <h5><a href="" class="logo">
+      
+        <img src="{% static 'assets/img/logonepal.png' %}"  alt="Logo"> &nbsp;&nbsp;<span>{{user.username}}</;span>
+        </a></h5>
+      <a href="" class="logo logo-small"> 
+      <img src="{% static 'assets/img/logonepal.png' %}" alt="Logo" width="30" height="30">
+      </a>
+   </div>
+   {% elif user.user_type == '6' %}
+   <div class="header-left">
+      {% if user.is_authenticated %}
+        {% if user.cao and user.cao.municipality %}
+          <a href="" class="logo">
+            <img src="{% static 'assets/img/logonepal.png' %}" alt="Logo">
+            <span><h6>{{user.cao.municipality.name }}</h6></span>
+          </a>
+        {% endif %}
+      {% endif %}
+      <a href="" class="logo logo-small">
+        <img src="{% static 'assets/img/logonepal.png' %}" alt="Logo" width="30" height="30">
+      </a>
+    </div>
+    {% elif user.user_type == '4' %}
+   <div class="header-left">
+      {% if user.is_authenticated %}
+        {% if user.accountant and user.accountant.municipality %}
+          <a href="" class="logo">
+            <img src="{% static 'assets/img/logonepal.png' %}" alt="Logo">
+            <span><h6>{{user.accountant.municipality.name }}</h6></span>
+          </a>
+        {% endif %}
+      {% endif %}
+      <a href="" class="logo logo-small">
+        <img src="{% static 'assets/img/logonepal.png' %}" alt="Logo" width="30" height="30">
+      </a>
+    </div>
+   {% else %}
+   <div class="header-left">
+      {% if user.is_authenticated %}
+        {% if user.engineer and user.engineer.municipality %}
+          <a href="" class="logo">
+            <img src="{% static 'assets/img/logonepal.png' %}" alt="Logo">
+            <span><h6>{{user.engineer.municipality.name }}</h6></span>
+          </a>
+        {% endif %}
+      {% endif %}
+      <a href="" class="logo logo-small">
+        <img src="{% static 'assets/img/logonepal.png' %}" alt="Logo" width="30" height="30">
+      </a>
+    </div>
+   {% endif %}
+
+   <a href="javascript:void(0);" id="toggle_btn">
+    <i class="fas fa-align-left"></i
+    </a>
+    <div class="top-nav-search mt-3">
+      
+      {% if user.is_authenticated %}
+     <h5> Namaste &nbsp;&nbsp; <span> {{user.username}} </span> &nbsp;! </h5>
+     {% endif %}
+    </div>
+
+     
+    <a class="mobile_btn" id="mobile_btn">
+    <i class="fas fa-bars"></i>
+    </a>
+    
+    <div class="top-nav-search mt-2">
+    <iframe scrolling="no" border="0" frameborder="0" marginwidth="0" marginheight="0" allowtransparency="true" src="https://www.ashesh.com.np/linknepali-time.php?time_only=no&font_color=333333&aj_time=yes&font_size=14&line_brake=1&api=512217n583" width="250" height="45"></iframe>
+    </div>
+
+    <ul class="nav user-menu">
+      
+       <li class="nav-item dropdown has-arrow">
+
+            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+               {% if user.profile_pic == "" %}
+               <span class="user-img"><img class="rounded-circle" src="{% static 'assets/img/logonepal.png' %}" width="31" ></span>
+               {% else %}
+               <span class="user-img"><img class="rounded-circle" src="/media/{{user.profile_pic}}" width="31" alt="Ryan Taylor"></span>
+            {% endif %}   
+            </a>
+         
+          </a>
+          <div class="dropdown-menu">
+             <div class="user-header">
+               <div class="avatar avatar-sm">
+                  {% if user.profile_pic == "" %}
+                  <span class="user-img"><img class="rounded-circle" src="{% static 'assets/img/logonepal.png' %}" width="31" alt="Ryan Taylor"></span>
+                  {% else %}
+                  <span class="user-img"><img class="rounded-circle" src="/media/{{user.profile_pic}}" width="31"></span>
+               {% endif %}  
+               </div>
+               
+                <div class="user-text">
+                  <h6>{{user.username}} </h6>
+                   {% if user.user_type == '1' %}
+                   <p class="text-muted mb-0">Admin </p>
+                   {% elif user.user_type == '2' %}
+                   <p class="text-muted mb-0">CAO</p>
+                   {% elif user.user_type == '3' %}
+                   <p class="text-muted mb-0">Accountant</p>
+                   {% elif user.user_type == '4' %}
+                   <p class="text-muted mb-0">Engineer</p>
+                    {% elif user.user_type == '5' %}
+                   <p class="text-muted mb-0">SubEngineer</p>
+                    {% elif user.user_type == '6' %}
+                   <p class="text-muted mb-0">Planning Officer</p>
+                
+         
+                   {% else  %}
+                   <p class="text-muted mb-0">Wada Sachib</p>
+                  
+                   {% endif %}
+                   
+                </div>
+             </div>
+             
+             <a class="dropdown-item" href="">My Profile Update</a>
+             <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+
+            
+          </div>
+       </li>
+    </ul>
+ </div>

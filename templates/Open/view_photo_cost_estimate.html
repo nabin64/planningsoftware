@@ -1,0 +1,23 @@
+{% extends 'base.html'%} {% block content %}
+<div class="content container-fluid">
+  <div class="page-header">
+    <div class="col">
+      <h5>Cost Estimate Photo Detail</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <h6>Project: {{ cost_estimate.project.name }}</h6>
+      {% if cost_estimate.photo1 %}
+      <img src="{{ cost_estimate.photo1.url }}" alt="Photo 1" />
+      {% else %}
+      <p>No photo available</p>
+      {% endif %} {% if cost_estimate.photo2 %}
+      <img src="{{ cost_estimate.photo2.url }}" alt="Photo 2" />
+      {% endif %} {% if cost_estimate.photo3 %}
+      <img src="{{ cost_estimate.photo3.url }}" alt="Photo 3" />
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

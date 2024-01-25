@@ -1,0 +1,57 @@
+{% extends 'base.html'%} {% block content %}
+<div class="content container-fluid">
+  <div class="page-header">
+    <div class="col">
+      <h5>योजनाको लागत अनुमानहरु विवरण</h5>
+    </div>
+  </div>
+  {% include 'includes/messages.html' %}
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="table-responsive">
+        <table
+          id="table_id"
+          class="table table-hover table-center table-sm mb-0"
+        >
+          <thead>
+            <tr>
+              <th>S.N.</th>
+              <th>FY</th>
+              <th>Project's Name</th>
+              <th>Budget</th>
+              <th>Contingency</th>
+              <th>User Contribution</th>
+              <th>Total Cost</th>
+
+              <th class="text-right">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in cost_estimate %}
+            <tr>
+              <td>{{ forloop.counter }}</td>
+              <td>{{ i.project.fiscalyear.fiscal_year }}</td>
+              <td>{{ i.project.name }}</td>
+              <td>{{ i.budget }}</td>
+              <td>{{ i.contigency_amount }}</td>
+              <td>{{ i.user_contribution }}</td>
+              <td>{{ i.cost_estimate }}</td>
+              <td class="text-right">
+                <a href="{% url "view_photo_cost_estimate" i.id %}" class="btn btn-sm bg-success mr-2">
+                  <i class="fa fa-eye" aria-hidden="true"></i> View Photo
+                </a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <div class="col d-flex justify-content-end">
+          <a href="{% url 'export_projects_to_excel'%}">
+            <button class="btn btn-success">Download In Excle</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

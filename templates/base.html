@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="en">
+   {% load static %}
+   
+   <head>
+    
+     
+        
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+      <title>Guaranty Management System</title>
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800|Montserrat:300,400,700" rel="stylesheet">
+      <link rel="shortcut icon" href="{% static 'assets/img/favicon.png '  %} ">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&amp;display=swap">
+      <link rel="stylesheet" href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}">
+      <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+      <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+      <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <link scr= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/solid.min.css" rel = "stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/solid.min.css" integrity="sha512-bdTSJB23zykBjGDvyuZUrLhHD0Rfre0jxTd0/jpTbV7sZL8DCth/88aHX0bq2RV8HK3zx5Qj6r2rRU/Otsjk+g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+     
+      <link href="{% static 'assets/css/nepali.datepicker.v3.7.min.css'%}" rel="stylesheet" type="text/css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha512-Cy60pH4lLzz7VfchjB7xJNY3tq3DKt/zzNtPDBz5F5lBdx5Ic0DDk5N5ZVntSfPFuO7bM5mg26u/Uy4e4ASg/g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.all.min.js"></script>
+
+      
+      <link rel="stylesheet" href="{% static 'assets/css/style.css' %} ">
+
+  <!--  select2 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+ 
+      <!--  datatable -->
+
+
+      <link rel="stylesheet" href="{% static 'assets/plugins/datatables/datatables.min.css' %}">
+
+      <style>
+   
+        table tbody tr {
+          height: 20px !important;
+          font-size: 16px !important;
+          line-height: 20px !important;
+          
+        }
+      
+
+       
+        th {
+          white-space: normal;
+        }
+        .header {
+          margin-top: 15px;
+        
+          }
+          .sidebar {
+            margin-top: 50px;
+        }
+        .header-left {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .actions {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        
+        .actions button {
+          margin-left: 10px;
+        }
+    
+    
+ #table_id  th, td,tr {
+    font-size: 15px; 
+  }
+
+  #table_id th, #table_id td {
+    padding: 4px;
+  }
+        
+      </style>
+   </head>
+<body>
+    <div class="main-wrapper">
+            {% include 'includes/header.html' %}
+
+            {% include 'includes/sidebar.html' %}
+       
+        <div class="page-wrapper">
+
+             <div class="content container-fluid">
+         
+               {% block content%}
+               
+               {% endblock%}
+
+               
+
+          {% include 'includes/footer.html' %}
+
+
+</div>
+</div>
+<script src="{% static 'assets/js/jquery-3.6.0.min.js' %} "></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+<script src="{% static 'assets/plugins/apexchart/apexcharts.min.js' %}"></script>
+<script src="{% static 'assets/plugins/apexchart/chart-data.js' %}"></script>
+<script src="{% static 'assets/js/script.js' %}"></script>
+<script src="{% static 'assets/plugins/datatables/datatables.min.js'%}"></script>
+<script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+<script src="{% static 'assets/js/nepalidatepicker.js'%} "></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#table_id').dataTable();
+    });
+</script>
+
+<script>
+
+    $(function() {
+       $("#datepicker" ).datepicker({
+          appendText:"(yy-mm-dd)",
+          dateFormat:"yy-mm-dd",
+
+       });
+    });
+ </script>
+
+<script src="{% static 'assets/js/nepali.datepicker.v3.7.min.js'%}"></script>
+<script type="text/javascript">
+  window.onload = function() {
+    /* Select your element */
+    var dateInputElement = document.getElementsByClassName("nepali-date");
+
+    /* Initialize Nepali Datepicker with options */
+    dateInputElement.nepaliDatePicker({
+      ndpYear: true,
+      ndpMonth: true,
+      readOnlyInput: true
+    });
+  };
+</script>
+
+<script>
+
+  //Functions to format Date in YYYY-MM-DD HH:MM:SS
+  function padTo2Digits(num) {
+    return num.toString().padStart(2, '0');
+  }
+
+  function formatDate(date) {
+    return (
+      [
+        date.getFullYear(),
+        padTo2Digits(date.getMonth() + 1),
+        padTo2Digits(date.getDate()),
+      ].join('-') +
+      ' ' + [
+        padTo2Digits(date.getHours()),
+        padTo2Digits(date.getMinutes()),
+        padTo2Digits(date.getSeconds()),
+      ].join(':')
+    );
+  }
+</script>
+
+
+
+<script src="{% static 'assets/js/nepali.datepicker.v3.7.min.js'%}"></script>
+<script type="text/javascript">
+  window.onload = function() {
+    /* Select your element */
+    var dateInputElement = document.getElementsByClassName("nepali-date");
+
+    /* Initialize Nepali Datepicker with options */
+    dateInputElement.nepaliDatePicker({
+      ndpYear: true,
+      ndpMonth: true,
+      readOnlyInput: true
+    });
+  };
+
+
+
+</script>
+
+
+
+
+
+
+
+{% block script %}
+
+
+{% endblock %}
+
+
+
+  
+</body>
+
+</html>

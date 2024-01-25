@@ -1,0 +1,163 @@
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-inner slimscroll">
+    <div id="sidebar-menu" class="sidebar-menu">
+      {% if user.user_type == '1' %}
+      <ul>
+        <li class="">
+          <a href=""
+            ><i class="fas fa-baseball-ball"></i> <span>DASHBOARD</span></a
+          >
+        </li>
+
+
+           <li class="submenu">
+          <a href="#"
+            ><i class="fas fa-user-graduate"></i>
+            <span> MANAGE PROJECT</span> <span class="menu-arrow"></span
+          ></a>
+          <ul>
+            <li><a href="{% url 'add_project'%}">ADD PROJECT</a></li>
+            <li><a href="{% url 'add_usercommittee'%}">ADD USER COMMITTE</a></li>
+            <li><a href="{% url 'add_cost_estimate'%}">ADD COST ESTIMATE</a></li>
+          </ul>
+        </li>
+
+           <li class="submenu">
+          <a href="#"
+            ><i class="fas fa-user-graduate"></i>
+            <span>MANAGE CONTRACT</span> <span class="menu-arrow"></span
+          ></a>
+          <ul>
+            <li><a href="{% url 'view_estimated_project'%}">View Estimated Project</a></li>
+            <li><a href="{% url 'view_projects'%}">View User Committed Project</a></li>
+           
+          </ul>
+        </li>
+          </li>
+
+           <li class="submenu">
+          <a href="#"
+            ><i class="fas fa-user-graduate"></i>
+            <span> MANAGE USER-COMMITTE</span> <span class="menu-arrow"></span
+          ></a>
+          <ul>
+            <li><a href="{% url 'view_usercommittee'%}"> उपभोक्ता समित हर्नुहोस</a></li>
+            <li><a href="{% url 'view_cost_estimat'%}"> लागत अनुमान हेर्नुहोस</a></li>
+          </ul>
+        </li>
+
+        <li class="submenu">
+          <a href="#"
+            ><i class="fas fa-chalkboard-teacher"></i>
+            <span> कर्मचारी थप्नुहोस</span> <span class="menu-arrow"></span
+          ></a>
+          <ul>
+            <li><a href="{% url 'add_accountant' %}">Add Accountant</a></li>
+            <li><a href="{% url 'add_engineer' %}">Add Engineer</a></li>
+            <li>
+              <a href="{% url 'add_planningofficer' %}">Add Planning officer</a>
+            </li>
+            <li>
+              <a href="{% url 'add_wadasachib' %}">Add Wada Sachib</a>
+            </li>
+            <li>
+              <a href="{% url 'add_subengineer' %}">Add Sub Engineer</a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="submenu">
+          <a href="#"
+            ><i class="fas fa-chalkboard-teacher"></i> <span>विवरणहरु</span>
+            <span class="menu-arrow"></span
+          ></a>
+          <ul>
+            <li><a href="{% url 'view_accountant'%}">View Accountant</a></li>
+            <li><a href="{% url 'view_engineer'%}">View Engineer</a></li>
+            <li>
+              <a href="{% url 'view_planningofficer'%}"
+                >View Planning Officer</a
+              >
+            </li>
+            <li><a href="{% url 'view_subengineer'%}">View Sub Engineer</a></li>
+            <li><a href="{% url 'view_wadasachib'%}">View Ward Sachib</a></li>
+          </ul>
+        </li>
+
+        <li class="submenu">
+          <a href="#"
+            ><i class="fas fa-chalkboard-teacher"></i> <span> सेटिङ</span>
+            <span class="menu-arrow"></span
+          ></a>
+          <ul>
+            <li><a href="">Fiscal Year</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
+        </li>
+      </ul>
+
+
+      {% elif user.user_type == '6' %}
+        <ul>
+        <li class="">
+          <a href=""
+            ><i class="fas fa-baseball-ball"></i> <span>DASHBOARD</span></a
+          >
+        </li>
+
+        <li class="submenu">
+          <a href="#"
+            ><i class="fas fa-user-graduate"></i>
+            <span> योजना व्यवस्थापन</span> <span class="menu-arrow"></span
+          ></a>
+          <ul>
+            <li><a href="{% url 'add_project'%}">योजना थप्नुहोस</a></li>
+              <li><a href="{% url 'add_usercommittee'%}">उपभोक्ता समिति थप्नुहोस</a></li>
+          </ul>
+        </li>
+
+           <li class="submenu">
+          <a href="#"
+            ><i class="fas fa-user-graduate"></i>
+            <span> प्रतिबेदनहरु</span> <span class="menu-arrow"></span
+          ></a>
+          <ul>
+            <li><a href="{% url 'view_projects'%}"> View Projects</a></li>
+          </ul>
+        </li>
+
+        
+
+        <li class="submenu">
+          <a href="#"
+            ><i class="fas fa-chalkboard-teacher"></i> <span> सेटिङ</span>
+            <span class="menu-arrow"></span
+          ></a>
+          <ul>
+            <li><a href="">Fiscal Year</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
+        </li>
+      </ul>
+  
+
+      {% else %}
+
+   
+   
+
+        <li>
+          <a href="{% url 'logout' %}"
+            ><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a
+          >
+        </li>
+      </ul>
+
+      {% endif %}
+    </div>
+  </div>
+</div>

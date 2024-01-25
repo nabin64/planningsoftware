@@ -1,0 +1,271 @@
+<!-- your_template.html -->
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="page-header">
+  <div class="row align-items-center">
+    <div class="col">
+      <h6>योजना/आयोजना थप्नुहोस</h6>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <form
+        action="{% url 'add_usercommittee' %}"
+        method="post"
+        id="add_project_form"
+      >
+        {% csrf_token %}
+
+        <div class="row custom-font-size">
+          <div class="col-md-9">
+            <div class="form-group">
+              <label for="name">योजनाको नामः</label>
+              <select class="form-control form-select" name="project" required>
+                <option value="{{i.id}}">योजना छान्नुहोस</option>
+                {% for i in projects %}
+
+                <option value="{{i.id}}">{{i.name}}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="name">उ.समिति गठन मिति</label>
+              <input
+                type="text"
+                class="form-control nepali-date date-required-check"
+                name="formation_date"
+                placeholder="योजना समाप्त मिति"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="form-group">
+              <label for="name">उपभोक्ता समितिको नामः</label>
+              <input
+                type="text"
+                class="form-control"
+                name="name"
+                placeholder="User Committee's Name"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="name">उ.स.अध्यक्षको नामः</label>
+              <input
+                type="text"
+                class="form-control"
+                name="chairman_name"
+                placeholder="Chairman's Name"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="chairman_citizenship">नागरिकता नम्बरः</label>
+              <input
+                type="text"
+                class="form-control"
+                name="chairman_citizenship"
+                placeholder="Citizenship Number"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="name">मोबाइलः</label>
+              <input
+                type="text"
+                class="form-control"
+                name="chairman_mobile"
+                placeholder="Chairman mobile"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="name">उ.स.सचिवको नामः</label>
+              <input
+                type="text"
+                class="form-control"
+                name="secretary_name"
+                placeholder="Secretary name"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="name">नागरिकता नम्बरः</label>
+              <input
+                type="text"
+                class="form-control"
+                name="secretary_citizenship"
+                placeholder="Secretary Citizenship"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="name"> मोबाइलः</label>
+              <input
+                type="text"
+                class="form-control"
+                name="secretary_mobile"
+                placeholder="Secretary Mobile"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="name">उ.स. कोषाध्यक्षको नामः</label>
+              <input
+                type="text"
+                class="form-control"
+                name="treasurer_name"
+                placeholder="Treasurer Name"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="name">नागरिकता नम्बरः</label>
+              <input
+                type="text"
+                class="form-control"
+                name="treasurer_citizenship"
+                placeholder="Treasurer Citizenship"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="name"> मोबाइलः</label>
+              <input
+                type="text"
+                class="form-control"
+                name="treasurer_mobile"
+                placeholder="Treasurer Mobile"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="name">सदस्यको नामः</label>
+              <input
+                type="text"
+                class="form-control"
+                name="member1"
+                placeholder="Member 1"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="name">सदस्यको नामः</label>
+              <input
+                type="text"
+                class="form-control"
+                name="member2"
+                placeholder="Member 2"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="name">सदस्यको नामः</label>
+              <input
+                type="text"
+                class="form-control"
+                name="member3"
+                placeholder="Member 3"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="name">सदस्यको नामः</label>
+              <input
+                type="text"
+                class="form-control"
+                name="member4"
+                placeholder="Member 4"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="name">योजना सुरु मिति</label>
+              <input
+                type="text"
+                class="form-control nepali-date date-required-check"
+                name="start_date"
+                placeholder="योजना सुरु मिति"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="name">योजना समाप्त मिति</label>
+              <input
+                type="text"
+                class="form-control nepali-date date-required-check"
+                name="accomplish_date"
+                placeholder="योजना समाप्त मिति"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="col-12">
+            <button
+              type="submit"
+              onclick="validateForm()"
+              class="btn btn-success"
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block script %}
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $(".form-control").select2();
+  });
+
+  function validateForm() {
+    var form = document.getElementById("add_project_form");
+    if (!form.checkValidity()) {
+      event.preventDefault();
+      event.stopPropagation();
+      form.classList.add("was-validated");
+    }
+    form.classList.add("was-validated");
+  }
+</script>
+{% endblock %}

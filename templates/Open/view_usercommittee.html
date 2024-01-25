@@ -1,0 +1,63 @@
+{% extends 'base.html'%} {% block content %}
+<div class="content container-fluid">
+  <div class="page-header">
+    <div class="col">
+      <h5>उपभोक्ता समितिको विवरण</h5>
+    </div>
+  </div>
+  {% include 'includes/messages.html' %}
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="table-responsive">
+        <table
+          id="table_id"
+          class="table table-hover table-center table-sm mb-0"
+        >
+          <thead>
+            <tr>
+              <th>S.N.</th>
+              <th>उपभोक्ता समितिको नाम</th>
+              <th>अध्यक्षको नाम</th>
+              <th>सम्पर्क नम्बर</th>
+              <th>Ward</th>
+              <th>Budget</th>
+              <th>FY</th>
+              <th class="text-center">STATUS</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in usercommittee %}
+            <tr>
+              <td>{{ forloop.counter }}</td>
+              <td>{{ i.name }}</td>
+              <td>{{ i.chairman_name }}</td>
+              <td>{{ i.chairman_mobile }}</td>
+
+              <td>{{ i.project.ward.name }}</td>
+              <td>{{ i.project.budget }}</td>
+
+              <td>{{ i.project.fiscalyear.fiscal_year }}</td>
+              <td class="text-right">
+                {% if i.status == 0 %}
+                <a href="" class="btn btn-sm bg-success mr-2">UnContracted </a>
+                {% elif i.status == 1 %}
+
+                <a href="" class="btn btn-sm bg-success mr-2"> cotracted </a>
+                {% else %}
+                <a href="" class="btn btn-sm bg-success mr-2"> Paid </a>
+                {% endif%}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <div class="col d-flex justify-content-end">
+          <a href="">
+            <button class="btn btn-success">Download In Excle</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

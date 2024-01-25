@@ -1,0 +1,127 @@
+<!-- your_template.html -->
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="page-header">
+  <div class="row align-items-center">
+    <div class="col">
+      <h6>योजना/आयोजनाको लागत अनुमान थप्नुहोस</h6>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <form
+        action="{% url 'add_cost_estimate' %}"
+        method="post"
+        id="add_project_form"
+      >
+        {% csrf_token %}
+
+        <div class="row custom-font-size">
+          <div class="col-md-8">
+            <div class="form-group">
+              <label for="name">योजनाको नामः</label>
+              <select
+                class="form-control form-select"
+                name="project"
+                required
+                onchange="updateBudget(this)"
+              >
+                <option value="{{i.id}}" data-budget="{{i.budget}}">
+                  योजना छान्नुहोस
+                </option>
+                {% for i in projects %}
+                <option value="{{i.id}}" data-budget="{{i.budget}}">
+                  {{i.name}}
+                </option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="form-group">
+              <label for="name">विनियोजत रकम:</label>
+              <input
+                type="text"
+                class="form-control"
+                name="budget"
+                placeholder="Allocated Budget"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="form-group">
+              <label for="name">कन्टेन्जेन्सी कट्टी रकम:{{ rate }}%</label>
+              <input
+                type="text"
+                class="form-control"
+                name="congtingency"
+                placeholder="Contingency Amount"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="form-group">
+              <label for="name">श्रमदान रकम:</label>
+              <input
+                type="text"
+                class="form-control"
+                name="usercontribution"
+                placeholder="User's Contribution"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="col-md-5">
+            <div class="form-group">
+              <label for="name">कुल लागत अनुमान:</label>
+              <input
+                type="text"
+                class="form-control"
+                name="totalcost"
+                placeholder="Total Cost Amount"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="col-12">
+            <button
+              type="submit"
+              onclick="validateForm()"
+              class="btn btn-success"
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block script %}
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $(".form-control").select2();
+  });
+
+  function updateBudget(selectElement) {
+    var selectedOption = selectElement.options[selectElement.selectedIndex];
+    var budgetInput = document.querySelector('input[name="budget"]');
+    budgetInput.value = selectedOption.getAttribute("data-budget");
+  }
+
+  function validateForm() {
+    var form = document.getElementById("add_project_form");
+    if (!form.checkValidity()) {
+      event.preventDefault();
+      event.stopPropagation();
+      form.classList.add("was-validated");
+    }
+    form.classList.add("was-validated");
+  }
+</script>
+{% endblock %}

@@ -1,0 +1,100 @@
+
+
+{% extends 'base.html'%}
+
+
+{% load static %}
+{% block content %}
+<div class="page-header">
+   <div class="row align-items-center">
+      <div class="col">
+         <h7 class="page-title">Add Engineer</h7>
+   </div>
+</div>
+<div class="row">
+   <div class="col-sm-12">
+      <div class="card">
+         <div class="card-body">
+            <form action="{% url 'add_engineer' %}" method="post">
+              {% csrf_token %}
+
+                  <div class="row">
+                  
+                 
+                         <div class="col-md-6">
+                            <div class="form-group">
+                               <label for="name">Name <sup class="text-danger">*required</sup></label>
+                               <input type="text" class="form-control" name="name"   placeholder=" Name">
+                            </div>
+                         </div>
+                      
+      
+                        
+                         <div class="col-md-6">
+                            <div class="form-group">
+                               <label for="mobile">Contact<sup class="text-danger">*required</sup></label>
+                               <input type="text" class="form-control" name="contact"   placeholder="Contact Number">
+                            </div>
+                         </div>
+                         <div class="col-md-6">
+                            <div class="form-group">
+                               <label for="vehicle"> Email  <sup class="text-danger">*required</sup></label>
+                               <input type="email" class="form-control" name="email"   placeholder="Email ">
+                            </div>
+                         </div> 
+                         <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="vehicle"> Username <sup class="text-danger">*required</sup></label>
+                              <input type="text" class="form-control" name="username"   placeholder="Username" >
+                           </div>
+                        </div> 
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="vehicle"> Password <sup class="text-danger">*required</sup></label>
+                              <input type="password" class="form-control" name="password" placeholder="Password ">
+                           </div>
+                        </div>
+                        
+             
+               
+
+               <div class="col-12">
+                     <button type="submit" class="btn btn-success">Save </button>
+               </div>
+              
+             
+            </form>
+         </div>
+      </div>
+   </div>
+</div>
+
+
+
+
+{% endblock%}
+{% block script %}
+
+<script>
+  // get all the input fields
+  const inputs = document.querySelectorAll("input");
+
+  // loop through each input field and add focus and blur event listeners
+  inputs.forEach((input) => {
+    input.addEventListener("focus", (event) => {
+      // change the background color of the input field when it has focus
+      event.target.style.backgroundColor = "#ADFF2F";
+    });
+
+    input.addEventListener("blur", (event) => {
+      // reset the background color when the input field loses focus
+      event.target.style.backgroundColor = "";
+    });
+  });
+</script>
+{% endblock %}
+
+
+
+
+
